@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box .active {
+            background: red;
+        }
+        
+        #box div {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            font-size: 30px;
+            text-align: center;
+            line-height: 200px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <button class="active">新闻</button>
+        <button>金融</button>
+        <button>体育</button>
+        <div style="display: block">新闻新闻</div>
+        <div>金融金融</div>
+        <div>体育体育</div>
+    </div>
+
+    <script>
+        var box = document.getElementById('box');
+        var aBtn = box.querySelectorAll('button'); // 获取btn
+        var aDiv = box.querySelectorAll('div'); // 获取div
+
+        for (var i = 0; i < aBtn.length; i++) {
+            aBtn[i].index = i; // 添加自定义的属性
+            // 给每个按钮添加点击事件
+            aBtn[i].onclick = function() {
+
+                // 让所有的btn去掉class，所有的div隐藏
+                for (var n = 0; n < aBtn.length; n++) {
+                    aBtn[n].className = '';
+                    aDiv[n].style.display = 'none';
+                }
+
+                // 让当前点击的这个btn添加class
+                this.className = 'active';
+                // 让对应的div显示
+                aDiv[this.index].style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>
